@@ -1,0 +1,8 @@
+{
+  "max_len": 250,
+  "truncating_strategy": "head_tail",
+  "head_len": 125,
+  "tail_len": 125,
+  "padding": "post",
+  "pad_token_index": 0
+}

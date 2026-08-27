@@ -1,0 +1,76 @@
+<svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333333"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="700" fill="#ffffff"/>
+
+  <text x="500" y="28" font-size="17" font-weight="bold" text-anchor="middle">Sơ đồ luồng chi tiết — Pipeline 2 (Tokenization + Embedding)</text>
+
+  <!-- Query -->
+  <rect x="400" y="50" width="200" height="45" rx="6" fill="#e8eef7" stroke="#2b5797" stroke-width="1.5"/>
+  <text x="500" y="78" font-size="12" font-weight="bold" text-anchor="middle">Query (str)</text>
+
+  <line x1="500" y1="95" x2="500" y2="123" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- tokenize -->
+  <rect x="330" y="125" width="340" height="55" rx="6" fill="#eaf6ea" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="500" y="148" font-size="12.5" font-weight="bold" text-anchor="middle">Tokenize theo ký tự</text>
+  <text x="500" y="165" font-size="10" fill="#555555" text-anchor="middle">List[char], độ dài = length(query)</text>
+
+  <line x1="500" y1="180" x2="500" y2="205" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- index hóa -->
+  <rect x="330" y="207" width="340" height="65" rx="6" fill="#eaf6ea" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="500" y="228" font-size="12.5" font-weight="bold" text-anchor="middle">Index hóa theo vocabulary (96 token)</text>
+  <text x="500" y="245" font-size="10" fill="#555555" text-anchor="middle">&lt;PAD&gt;=0, &lt;UNK&gt;=1, 94 ký tự thật (tần suất≥10 trong train)</text>
+  <text x="500" y="260" font-size="10" fill="#555555" text-anchor="middle">ký tự lạ / chưa từng thấy → &lt;UNK&gt;</text>
+
+  <line x1="500" y1="272" x2="500" y2="298" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- decision diamond -->
+  <polygon points="500,300 620,345 500,390 380,345" fill="#fff4e5" stroke="#b26a00" stroke-width="1.5"/>
+  <text x="500" y="340" font-size="11" font-weight="bold" text-anchor="middle">length</text>
+  <text x="500" y="354" font-size="11" font-weight="bold" text-anchor="middle">&gt; 250 ?</text>
+
+  <!-- No branch -->
+  <line x1="410" y1="335" x2="230" y2="300" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="290" y="305" font-size="10" fill="#2e7d32" font-weight="bold">Không</text>
+
+  <rect x="80" y="255" width="300" height="60" rx="6" fill="#e3f2fd" stroke="#0d47a1" stroke-width="1.5"/>
+  <text x="230" y="277" font-size="11.5" font-weight="bold" text-anchor="middle">post-padding bằng &lt;PAD&gt;=0</text>
+  <text x="230" y="294" font-size="10" fill="#555555" text-anchor="middle">giữ nguyên nội dung ở đầu, đệm cuối cho đủ 250</text>
+
+  <!-- Yes branch -->
+  <line x1="590" y1="335" x2="770" y2="300" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="710" y="305" font-size="10" fill="#a02020" font-weight="bold">Có</text>
+
+  <rect x="620" y="255" width="330" height="60" rx="6" fill="#fce8e8" stroke="#a02020" stroke-width="1.5"/>
+  <text x="785" y="277" font-size="11.5" font-weight="bold" text-anchor="middle">head+tail truncation</text>
+  <text x="785" y="294" font-size="10" fill="#555555" text-anchor="middle">giữ 125 ký tự đầu + 125 ký tự cuối, bỏ đoạn giữa</text>
+
+  <!-- merge down -->
+  <line x1="230" y1="315" x2="380" y2="440" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="785" y1="315" x2="620" y2="440" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="500" y1="390" x2="500" y2="440" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- sequence output -->
+  <rect x="300" y="443" width="400" height="55" rx="6" fill="#eaf6ea" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="500" y="465" font-size="12.5" font-weight="bold" text-anchor="middle">sequence (250,) — index đã pad/truncate</text>
+  <text x="500" y="483" font-size="10" fill="#555555" text-anchor="middle">dtype: int, sẵn sàng đưa vào Embedding layer</text>
+
+  <line x1="500" y1="498" x2="500" y2="525" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Embedding layer -->
+  <rect x="330" y="528" width="340" height="55" rx="6" fill="#f3e8fa" stroke="#6a1b9a" stroke-width="1.5"/>
+  <text x="500" y="550" font-size="12.5" font-weight="bold" text-anchor="middle">Embedding layer</text>
+  <text x="500" y="567" font-size="10" fill="#555555" text-anchor="middle">input_dim=96 (vocab_size), output_dim=64 (embedding_dim)</text>
+
+  <line x1="500" y1="583" x2="500" y2="610" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="330" y="613" width="340" height="45" rx="6" fill="#f3e8fa" stroke="#6a1b9a" stroke-width="1.5"/>
+  <text x="500" y="641" font-size="12.5" font-weight="bold" text-anchor="middle">→ Tầng 2 (LSTM) / Tầng 3 (LSTM+Attention)</text>
+
+  <text x="500" y="680" font-size="10" font-style="italic" text-anchor="middle" fill="#666666">vocab xây CHỈ trên train.csv — lưu artifacts/vocab.json, artifacts/max_len.json</text>
+</svg>
