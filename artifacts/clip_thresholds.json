@@ -1,0 +1,14 @@
+{
+  "length": 377.0,
+  "uppercase_ratio": 0.6363636363636364,
+  "n_whitespace": 171.0,
+  "n_digit": 55.0,
+  "n_quote": 6.0,
+  "n_equal": 3.0,
+  "n_comma": 8.0,
+  "n_paren": 36.0,
+  "n_percent": 2.0,
+  "n_comment_markers": 1.0,
+  "keyword_repeat_count": 3.0,
+  "n_semicolon": 1.0
+}
