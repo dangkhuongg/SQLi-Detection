@@ -1,0 +1,4 @@
+Lưu ý nổi bật tuần 4:
+keyword_repeat_count — dự đoán ban đầu là có thể dư thừa với has_union/has_or, nhưng thực tế đứng thứ 2/16 về importance.
+Không có câu truy vấn nào lặp lại trong train.csv (0 dòng) — loại trừ hoàn toàn khả năng kết quả CV cao (F1>0,995) là do rò rỉ dữ liệu.
+Random Forest vượt trội SVM ở mọi mặt đã đo (hiệu năng, tốc độ, đặc biệt ít bỏ sót tấn công hơn — FN=14 so với 22).
