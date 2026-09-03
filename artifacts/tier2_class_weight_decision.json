@@ -1,0 +1,10 @@
+{
+  "used": true,
+  "method": "sklearn.utils.class_weight.compute_class_weight(balanced)",
+  "values": {
+    "0": 0.7913499239817556,
+    "1": 1.3580747047514419
+  },
+  "decision_date": "Tuần 5, Ngày 3-4",
+  "note": "PHẢI dùng lại đúng giá trị/phương pháp này cho Tầng 3 (LSTM+Attention) ở Tuần 6 để đảm bảo so sánh công bằng ở Tuần 7."
+}
