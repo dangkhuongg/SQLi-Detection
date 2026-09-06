@@ -33,6 +33,9 @@ Khối Middleware: Nhận 1 query đơn lẻ từ người dùng -> Thực thi v
 - Các đối tượng tiền xử lý (`scaler`, `vocab`, `max_len`) được lưu tách riêng khỏi mô hình, trong thư mục `artifacts/`, vì middleware cần load chúng **trước** bước đưa dữ liệu vào mô hình.
 
 ## 4. Quy ước thư mục (áp dụng xuyên suốt Tuần 4-8)
+Khung project được tạo từ Tuần 1 gồm: `app/, datasets/, docs/, models/, notebooks/, references/, results/, src/`. Trong đó `models/` và `results/` đã có sẵn và được dùng đúng mục đích ban đầu (lưu mô hình, lưu kết quả đánh giá).
+
+Từ Tuần 3: thư mục `artifacts/` (cấp gốc, ngang hàng `models/`) — không có trong khung project ban đầu, được thêm vào vì lý do kỹ thuật: các đối tượng tiền xử lý (scaler, vocabulary, max_len, thứ tự cột đặc trưng) không phải là mô hình và không phải là kết quả đánh giá, mà là trạng thái tiền xử lý bắt buộc phải tái sử dụng y nguyên giữa lúc huấn luyện và lúc suy luận (Tuần 8). Gộp chung với `models/` sẽ làm mất phân biệt giữa "mô hình" và "cấu hình tiền xử lý mô hình cần", trong khi middleware ở Tuần 8 cần load rõ ràng hai loại tài nguyên này theo hai bước riêng biệt (tiền xử lý → rồi mới đưa vào mô hình).
 
 models/
 ├── tier1_rf.pkl
@@ -51,6 +54,7 @@ results/
 ├── tier2_metrics.json
 ├── tier3_metrics.json
 └── comparison_table.csv
+
 
 ## 5. Ranh giới giữa hai pipeline
 

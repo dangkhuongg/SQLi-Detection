@@ -12,24 +12,22 @@ Báo cáo Tuần 2 (mục 3) ghi tổng số đặc trưng đề xuất là 15, 
 
 ## 2. Danh sách 16 đặc trưng — kiểu dữ liệu và công thức
 
-| Index | Tên | Nhóm | Kiểu | Công thức / định nghĩa | Căn cứ EDA (Tuần 2) |
-|---|---|---|---|---|---|
-| 0 | `length` | Cấu trúc | int | Số ký tự của câu truy vấn | chênh lệch ~3 lần giữa 2 lớp |
-| 1 | `uppercase_ratio` | Cấu trúc | float [0,1] | Số ký tự in hoa / `length` | chênh lệch tuyệt đối lớn (23,72% vs 0,39%), ngược hướng giả định |
-| 2 | `n_whitespace` | Cấu trúc | int | Số ký tự khoảng trắng | chênh lệch ~6,7 lần |
-| 3 | `n_digit` | Cấu trúc | int | Số ký tự chữ số (0-9) | chênh lệch ~10,7 lần |
-| 4 | `n_quote` | Ký tự đặc biệt | int | Số dấu `'` | chênh lệch ~1,7 lần |
-| 5 | `n_equal` | Ký tự đặc biệt | int | Số dấu `=` | chênh lệch ~5,8 lần |
-| 6 | `n_comma` | Ký tự đặc biệt | int | Số dấu `,` | chênh lệch ~5,4 lần |
-| 7 | `n_paren` | Ký tự đặc biệt | int | Tổng số `(` và `)` | chênh lệch ~12-14 lần |
-| 8 | `n_percent` | Ký tự đặc biệt | int | Số dấu `%` | chênh lệch ~6,55 lần |
-| 9 | `n_comment_markers` | Ký tự đặc biệt | int | Tổng số `--`, `#`, `/* */` | chênh lệch ~820 lần — mạnh nhất toàn EDA |
-| 10 | `keyword_repeat_count` | Từ khóa | int | Tổng số lần các từ khóa nguy hiểm lặp lại trong câu | tổng hợp, chưa có số liệu riêng ở Tuần 2 |
-| 11 | `n_semicolon` | Bổ trợ | int | Số dấu `;` | chênh lệch ngược hướng giả định (thấp hơn ở lớp SQLi) — giữ lại để Tuần 4 đánh giá lại |
-| 12 | `has_union` | Từ khóa | binary (0/1) | Có chứa `UNION` (không phân biệt hoa/thường) | chênh lệch ~7,4 lần |
-| 13 | `has_or` | Từ khóa | binary (0/1) | Có chứa `OR` như một từ riêng | chênh lệch ~1,5 lần |
-| 14 | `has_select_from` | Từ khóa | binary (0/1) | Có chứa cấu trúc `SELECT...FROM` | thay thế đếm `SELECT` đơn lẻ để giảm nhiễu |
-| 15 | `has_drop` | Bổ trợ | binary (0/1) | Có chứa `DROP` | tần suất quá thấp ở cả 2 lớp (<0,4%) — giữ lại để Tuần 4 đánh giá lại |
+Index 0 – length (Cấu trúc, int): Số ký tự câu truy vấn (chênh lệch ~3 lần giữa 2 lớp).  
+Index 1 – uppercase_ratio (Cấu trúc, float[0,1]): Tỷ lệ chữ in hoa (chữ hoa / length), chênh lệch thực tế 23,72% vs 0,39% ngược giả định.  
+Index 2 – n_whitespace (Cấu trúc, int): Số ký tự khoảng trắng (chênh lệch ~6,7 lần).  
+Index 3 – n_digit (Cấu trúc, int): Số lượng chữ số từ 0 đến 9 (chênh lệch ~10,7 lần).  
+Index 4 – n_quote (Ký tự đặc biệt, int): Số dấu nháy đơn ' (chênh lệch ~1,7 lần).  
+Index 5 – n_equal (Ký tự đặc biệt, int): Số dấu bằng = (chênh lệch ~5,8 lần).  
+Index 6 – n_comma (Ký tự đặc biệt, int): Số dấu phẩy , (chênh lệch ~5,4 lần).  
+Index 7 – n_paren (Ký tự đặc biệt, int): Tổng số dấu ngoặc đơn ( và ) (chênh lệch ~12–14 lần).  
+Index 8 – n_percent (Ký tự đặc biệt, int): Số dấu phần trăm % (chênh lệch ~6,55 lần).  
+Index 9 – n_comment_markers (Ký tự đặc biệt, int): Tổng số ký hiệu --, #, /* */ (chênh lệch ~820 lần, mạnh nhất EDA).  
+Index 10 – keyword_repeat_count (Từ khóa, int): Tổng số lần lặp lại các từ khóa nguy hiểm.  
+Index 11 – n_semicolon (Bổ trợ, int): Số dấu chấm phẩy ; (tần suất thấp hơn ở SQLi, giữ lại đánh giá ở Tuần 4).  
+Index 12 – has_union (Từ khóa, binary 0/1): Cờ nhận diện có chứa UNION (chênh lệch ~7,4 lần).  
+Index 13 – has_or (Từ khóa, binary 0/1): Cờ nhận diện có chứa từ khóa OR đứng riêng (chênh lệch ~1,5 lần).  
+Index 14 – has_select_from (Từ khóa, binary 0/1): Cờ nhận diện cấu trúc SELECT...FROM thay vì đếm SELECT rời để giảm nhiễu.  
+Index 15 – has_drop (Bổ trợ, binary 0/1): Cờ nhận diện từ khóa DROP (tần suất thấp <0,4%, giữ lại đánh giá ở Tuần 4).  
 
 **Thứ tự cột 0-15 ở trên là thứ tự cố định**, dùng xuyên suốt từ Tuần 4 đến Tuần 8, không thay đổi sau khi bắt đầu code.
 

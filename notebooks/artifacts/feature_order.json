@@ -1,0 +1,18 @@
+[
+  "length",
+  "uppercase_ratio",
+  "n_whitespace",
+  "n_digit",
+  "n_quote",
+  "n_equal",
+  "n_comma",
+  "n_paren",
+  "n_percent",
+  "n_comment_markers",
+  "keyword_repeat_count",
+  "n_semicolon",
+  "has_union",
+  "has_or",
+  "has_select_from",
+  "has_drop"
+]

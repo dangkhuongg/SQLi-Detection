@@ -1,0 +1,18 @@
+{
+  "precision": 0.9986713906111603,
+  "recall": 0.9907732864674869,
+  "f1": 0.9947066607851787,
+  "confusion_matrix": [
+    [
+      3902,
+      3
+    ],
+    [
+      21,
+      2255
+    ]
+  ],
+  "threshold": 0.5,
+  "model_checkpoint": "best_weights_restored_epoch_5",
+  "note": "Đánh giá trên test.csv, dùng chung tập test với Tầng 1 và Tầng 2, không random lại."
+}

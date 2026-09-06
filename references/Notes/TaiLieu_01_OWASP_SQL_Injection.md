@@ -2,6 +2,9 @@
 
 - **Tác giả / Năm:** OWASP Foundation; Contributors: kingthorin, zbraiterman / Không xác định năm xuất bản cụ thể
 - **Nguồn:** OWASP Community — SQL Injection
+- **Nguồn bổ sung:**
+  - OWASP — Blind SQL Injection
+  - OWASP Web Security Testing Guide — Testing for SQL Injection
 
 - **Mục đích / Nội dung chính của tài liệu:**
   - Giải thích SQL Injection và cách thức xảy ra.

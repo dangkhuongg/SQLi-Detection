@@ -4,8 +4,8 @@
 Bingyao Liu, Jiajing Chen, Rui Wang, Junming Huang, Yuanshuai Luo, Jianjun Wei
 2024
 
-**Nguồn**
-arxiv.org
+**Nguồn:** arXiv
+**arXiv ID:** 2409.15576
 
 **Mục đích / Nội dung chính**
 - Paper đề xuất mô hình Deep Learning kết hợp Bi-LSTM và Attention Mechanism để tự động phân loại văn bản tin tức.
