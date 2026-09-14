@@ -10,10 +10,12 @@ Hệ thống tự động phát hiện truy vấn SQL bất thường (SQL Injec
 
 ## Cấu trúc project
 - `app/` — ứng dụng middleware demo (Streamlit)
+- `artifacts/`
 - `datasets/` — dữ liệu raw và đã xử lý (không commit dữ liệu lớn, xem mục Dataset)
 - `docs/` — báo cáo theo từng tuần
 - `models/` — model đã huấn luyện (lưu ý: có thể không commit file lớn)
 - `notebooks/` — notebook thử nghiệm
+- `reference/` — đề tài nghiên cứu liên quan
 - `src/` — mã nguồn chính (preprocessing, feature_engineering, training, utils)
 
 ## Cài đặt môi trường
