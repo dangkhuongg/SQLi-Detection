@@ -26,7 +26,7 @@ pip install -r requirements.txt
 \`\`\`
 
 ## Dataset
-*(cập nhật sau khi chốt ở Tuần 2)*
+Modified_SQL_Dataset.csv, Kaggle, vói 30.919 câu truy vấn SQL được gán nhãn nhị phân (0 - hợp lệ, 1 - SQLi)
 
 ## Tiến độ
-Xem `docs/WeekXX/` cho báo cáo từng tuần.
+Hoàn thành
